@@ -28,7 +28,7 @@ with st.sidebar:
         st.switch_page("Home.py")
 
 st.header("👤 ユーザー管理")
-st.caption("管理者専用ページです。")
+st.caption("管理者専用ページです")
 st.markdown("---")
 
 # ── ユーザー一覧 ──────────────────────────────────────────────────────────────
