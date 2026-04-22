@@ -242,28 +242,3 @@ if st.session_state.ps_combined is not None:
         st.warning("類似商品が見つかりませんでした。")
     else:
         st.subheader(f"🔎 参考にした類似商品 ({len(similar_items)} 件)")
-        st.caption("サイズ種別: shipping=発送実績サイズ / package=製品パッケージサイズ")
-
-        df = pd.DataFrame([
-            {
-                "類似度":        f"{r['score']:.3f}",
-                "サイズ種別":    r.get("size_type", "shipping"),
-                "JANコード":     r["jan"],
-                "商品名(日)":    r["product_name_ja"],
-                "シリーズ":      r["series"],
-                "メーカー":      r["manufacturer"],
-                "カテゴリ":      r["category_2"],
-                "サブカテゴリ":   r["category_3"],
-                "梱包縦(cm)":    r.get("shipping_length"),
-                "梱包横(cm)":    r.get("shipping_width"),
-                "梱包高(cm)":    r.get("shipping_height"),
-                "梱包重量(kg)":  r.get("shipping_weight"),
-                "PKG縦(cm)":    r.get("package_length"),
-                "PKG横(cm)":    r.get("package_width"),
-                "PKG高(cm)":    r.get("package_height"),
-                "PKG重量(g)":   r.get("package_weight"),
-            }
-            for r in similar_items
-        ])
-
-        st.dataframe(df, width="stretch", hide_index=True)
