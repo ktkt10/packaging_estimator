@@ -1,15 +1,7 @@
 """
 Home.py
-Streamlitアプリのエントリーポイント（ログイン画面）。
-
-起動コマンド:
-    streamlit run Home.py
-
-ユーザー情報は users.db (SQLite) で管理。初回起動時に自動生成される。
-
-【修正履歴】
-2026.4.16   ログイン済みの場合はトップ画面を表示せず 1_梱包サイズ検索.py に直接リダイレクト
-            show_home() を削除
+Streamlitアプリのエントリーポイント（ログイン画面）
+ユーザー情報は users.db (SQLite) で管理。初回起動時に自動生成される
 """
 
 import sys
