@@ -2,7 +2,7 @@
 utils/auth.py
 Streamlitのsession_stateを使った認証ヘルパーモジュール
 各ページの先頭でrequire_login()を呼ぶだけでログイン必須にできる
-ユーザー情報は utils/database.py (SQLite + bcrypt) で管理
+ユーザー情報は utils/database.py (Supabase + bcrypt) で管理する
 """
 
 import streamlit as st
@@ -18,7 +18,7 @@ def login(username: str, password: str) -> bool:
     if user:
         st.session_state["logged_in"] = True
         st.session_state["user"]      = user
-        st.session_state["username"]  = user["username"]  # 既存ページとの後方互換
+        st.session_state["username"]  = user["username"]
         return True
     return False
 
@@ -47,10 +47,10 @@ def current_user() -> dict:
 def require_login():
     """
     ログインが必要なページの先頭で呼ぶ。
-    未ログインの場合はエラーメッセージを表示してページの処理を停止する。
+    未ログインの場合はログインページにリダイレクトする。
     """
     if not is_logged_in():
-        st.error("このページを表示するにはログインが必要です。")
+        st.switch_page("Home.py")
         st.stop()
 
 
