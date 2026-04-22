@@ -1,7 +1,7 @@
 """
 Home.py
 Streamlitアプリのエントリーポイント（ログイン画面）
-ユーザー情報は users.db (SQLite) で管理。初回起動時に自動生成される
+ユーザー情報は Supabase で管理。初回起動時に管理者アカウントを自動生成する
 """
 
 import sys
@@ -18,22 +18,22 @@ import streamlit as st
 from utils.auth import login, is_logged_in
 
 st.set_page_config(
-    page_title="ホビー梱包サイズ検索",
+    page_title="梱包サイズ推定",
     page_icon="📦",
     layout="wide",
 )
 
 
 def show_login_form():
-    st.header("📦 ホビー梱包サイズ検索")
+    st.header("📦 梱包サイズ推定")
     st.markdown("---")
 
     _, col, _ = st.columns([1, 2, 1])
     with col:
         st.subheader("ログイン")
         with st.form("login_form"):
-            username = st.text_input("ユーザー名")
-            password = st.text_input("パスワード", type="password")
+            username  = st.text_input("ユーザー名")
+            password  = st.text_input("パスワード", type="password")
             submitted = st.form_submit_button("ログイン", width="stretch")
 
         if submitted:
