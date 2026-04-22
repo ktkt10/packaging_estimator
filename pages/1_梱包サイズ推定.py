@@ -240,4 +240,4 @@ if st.session_state.ps_combined is not None:
     if not similar_items:
         st.warning("類似商品が見つかりませんでした。")
     else:
-        st.subheader(f"🔎 参考にした類似商品 ({len(similar_items)} 件)")
+        st.info(f"🔎 参考にした類似商品 ({len(similar_items)} 件)")
