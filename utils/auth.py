@@ -1,13 +1,8 @@
 """
 utils/auth.py
-Streamlitのsession_stateを使った認証ヘルパーモジュール。
-各ページの先頭でrequire_login()を呼ぶだけでログイン必須にできます。
-ユーザー情報は utils/database.py (SQLite + bcrypt) で管理します。
-
-【修正履歴】
-2026.4.16   hobby_rag プロジェクトに移植
-            login() で st.session_state["username"] も同時にセット
-            (既存ページが st.session_state.get('username','') を参照しているため)
+Streamlitのsession_stateを使った認証ヘルパーモジュール
+各ページの先頭でrequire_login()を呼ぶだけでログイン必須にできる
+ユーザー情報は utils/database.py (SQLite + bcrypt) で管理
 """
 
 import streamlit as st
