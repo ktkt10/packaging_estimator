@@ -2,7 +2,7 @@
 2_ユーザー管理.py
 管理者専用のユーザー管理ページ
 ユーザーの一覧表示・新規追加・パスワード変更・削除ができる
-ユーザー情報は users.db (SQLite) で管理
+ユーザー情報は Supabase で管理する
 """
 
 import sys
@@ -10,7 +10,6 @@ import os
 
 import streamlit as st
 
-# プロジェクトルートをパスに追加
 for _p in [os.getcwd(), os.path.dirname(os.path.dirname(os.path.abspath(__file__)))]:
     if _p not in sys.path:
         sys.path.insert(0, _p)
