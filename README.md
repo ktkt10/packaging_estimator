@@ -142,6 +142,16 @@ https://packagingestimator-pf342ctx56eqpwvpsrsagq.streamlit.app
 - **一般ユーザー** 梱包サイズ検索ページのみ利用可
 - **管理者** ユーザーの追加・削除・パスワード変更が可能。最後の管理者は削除不可
 
+#### テーブル定義（users）
+
+| No | PK | FK | カラム名   | 項目名              | データ型  | NOT NULL | デフォルト |
+| -- | -- | -- | --------- | ------------------ | -------- | ------- | -------- |
+| 1  | ○  |    | id        | ユーザーID（連番）    | SERIAL   | ○       |          |
+| 2  |    |    | username  | ユーザー名           | TEXT     | ○       |          |
+| 3  |    |    | password  | パスワード（ハッシュ） | TEXT     | ○       |          |
+| 4  |    |    | is_admin  | 管理者フラグ         | BOOLEAN  | ○       | FALSE    |
+| 5  |    |    | created_at| 登録日時            | TIMESTAMP | ○       | NOW()    |
+
 ---
 
 ## ファイル構成
