@@ -93,6 +93,21 @@ def change_password(user_id: int, new_password: str):
     client.table("users").update({"password": hashed}).eq("id", user_id).execute()
 
 
+def change_role(user_id: int, is_admin: bool) -> bool:
+    """
+    指定ユーザーの権限を変更する。
+    管理者を一般ユーザーに降格する場合、最後の管理者であれば変更しない。
+    """
+    client = _get_client()
+    if not is_admin:
+        admin_count = client.table("users").select("id").eq("is_admin", True).execute()
+        target = client.table("users").select("is_admin").eq("id", user_id).execute()
+        if target.data and target.data[0]["is_admin"] and len(admin_count.data) <= 1:
+            return False
+    client.table("users").update({"is_admin": is_admin}).eq("id", user_id).execute()
+    return True
+
+
 def validate_username(username: str) -> str | None:
     """ユーザーIDのバリデーション。問題があればエラーメッセージを返す。"""
     if len(username) < 4:
