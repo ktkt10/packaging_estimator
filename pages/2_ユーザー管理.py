@@ -62,7 +62,7 @@ if confirm_uid:
     confirm_user = next((u for u in users if u["id"] == confirm_uid), None)
     if confirm_user:
         st.warning(f"ユーザー「{confirm_user['username']}」を削除しますか？")
-        btn_yes, btn_no, _ = st.columns([1, 1, 6])
+        btn_yes, btn_no, _ = st.columns([1, 2, 5])
         if btn_yes.button("はい", type="primary"):
             if delete_user(confirm_uid):
                 st.session_state.pop("confirm_delete_id", None)
@@ -82,11 +82,11 @@ else:
 
     # ヘッダー行
     h1, h2, h3, h4, h5 = st.columns(COL_W)
-    h1.markdown("**ユーザーID**")
-    h2.markdown("**権限**")
-    h3.markdown("**登録日時**")
-    h4.markdown("**保存**")
-    h5.markdown("**削除**")
+    h1.markdown("<p style='margin:0'><b>ユーザーID</b></p>", unsafe_allow_html=True)
+    h2.markdown("<p style='margin:0'><b>権限</b></p>", unsafe_allow_html=True)
+    h3.markdown("<p style='margin:0'><b>登録日時</b></p>", unsafe_allow_html=True)
+    h4.markdown("<p style='margin:0'><b>保存</b></p>", unsafe_allow_html=True)
+    h5.markdown("<p style='margin:0'><b>削除</b></p>", unsafe_allow_html=True)
     st.divider()
 
     # データ行
